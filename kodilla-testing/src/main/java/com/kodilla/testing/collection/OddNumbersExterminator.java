@@ -4,9 +4,9 @@ import java.lang.*;
 import java.util.*;
 
 public class OddNumbersExterminator {
-    List <Integer> evens = new LinkedList<>();
 
     public List<Integer> exterminate(List<Integer> numbers) {
+        List <Integer> evens = new LinkedList<>();
         for (Integer number : numbers) {
             if (number % 2 == 0) {
                 evens.add(number);
