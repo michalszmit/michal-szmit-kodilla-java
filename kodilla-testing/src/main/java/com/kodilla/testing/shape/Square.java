@@ -3,28 +3,26 @@ package com.kodilla.testing.shape;
 import java.util.Objects;
 
 public class Square implements Shape {
+    private double side;
 
-    private String shapeName;
-    private int field;
-
-    public Square (String shapeName, int field) {
-        this.shapeName = shapeName;
-        this.field = field;
+    public Square(double side) {
+        this.side = side;
     }
 
+    @Override
     public String getShapeName() {
-        return shapeName;
+        return "Square";
     }
-    public int getField() {
+
+    @Override
+    public double getField() {
+        double field = side*side;
         return field;
     }
 
     @Override
     public String toString() {
-        return "Square{" +
-                "shapeName='" + shapeName + '\'' +
-                ", field=" + field +
-                '}';
+        return "Square {" + "side=" + side + ", field=" + getField() + '}';
     }
 
     @Override
@@ -32,11 +30,11 @@ public class Square implements Shape {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Square square = (Square) o;
-        return field == square.field && Objects.equals(shapeName, square.shapeName);
+        return Double.compare(square.side, side) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shapeName, field);
+        return Objects.hash(side);
     }
 }

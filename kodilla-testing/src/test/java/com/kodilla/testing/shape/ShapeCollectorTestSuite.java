@@ -1,9 +1,6 @@
 package com.kodilla.testing.shape;
 
 import org.junit.jupiter.api.*;
-import java.lang.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @DisplayName("TDD Shape Collector Test suite")
 public class ShapeCollectorTestSuite {
@@ -23,54 +20,63 @@ public class ShapeCollectorTestSuite {
         System.out.println("Preparing to execute test # " + testCount);
     }
 
+    @DisplayName("Testing figure adding method: ")
     @Test
     void addFigure() {
         //Given
-        ShapeCollector newFigure = new ShapeCollector ();
-        List<String> emptyCollection = new ArrayList<>();
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle(10);
         //When
-        List<String> result = newFigure.addFigure("Circle");
-        List<String> expected = emptyCollection;
-        expected.add(0, "Circle");
+        String expected = "Circle";
+        shapeCollector.addFigure(circle);
         //Then
-        Assertions.assertEquals(expected, result);
+        Assertions.assertEquals(expected, shapeCollector.getFigure(0).getShapeName());
+
     }
+
+    @DisplayName("Testing figure removing method: ")
     @Test
      void removeFigure() {
         //Given
-        ShapeCollector newList = new ShapeCollector();
-        List<String> circleList = new ArrayList<>();
-        circleList.add(0, "Circle");
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle(10);
+        shapeCollector.addFigure(circle);
         //When
-        List<String> result = newList.removeFigure("Circle");
-        List<String> expected = new ArrayList<>();
+        shapeCollector.removeFigure(circle);
+        String expected = "[]";
         //Then
-        Assertions.assertEquals(expected, result);
+        Assertions.assertEquals(expected, shapeCollector.showFigures());
+
     }
+
+    @DisplayName("Testing method that displays specific figure: ")
     @Test
     void getFigure() {
         //Given
-        ShapeCollector newList = new ShapeCollector();
-        List<String> circleList = new ArrayList<>();
-        circleList.add(0, "Circle");
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle(10);
+        shapeCollector.addFigure(circle);
         //When
-        int result = newList.getFigure(circleList, 0);
         String expected = "Circle";
+        Shape result = shapeCollector.getFigure(0);
         //Then
-        Assertions.assertEquals(expected, result);
+        Assertions.assertEquals(expected, result.getShapeName());
     }
+
+    @DisplayName("Testing method for showing all figures: ")
+    @Nested
+    class NestedTesting {
     @Test
     void showFigures() {
         //Given
-        ShapeCollector newList = new ShapeCollector();
-        List<String> fullList = new ArrayList<>();
-        fullList.add(0, "Circle");
-        fullList.add(1, "Square");
-        fullList.add(2, "Triangle");
+        ShapeCollector shapeCollector = new ShapeCollector();
+        Circle circle = new Circle(10);
+        shapeCollector.addFigure(circle);
         //When
-        String result = newList.showFigures(fullList);
-        String expected = "Circle" + "Square" + "Triangle";
+        String expected = "[Circle{radius=10.0, field=314.0}]";
+        String result = shapeCollector.showFigures();
         //Then
         Assertions.assertEquals(expected, result);
+    }
     }
 }
