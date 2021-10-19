@@ -87,4 +87,5 @@ class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());                                                           // [5]
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());            // [6]
     }
+
 }

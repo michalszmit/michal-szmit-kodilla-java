@@ -24,25 +24,21 @@ public class WeatherForecast {
 
     public double calculateAverage() {
         Double total = 0.0;
-        double average = 0.0;
-        for (Double abc : calculateForecast().values()) {
-            total += abc;
-            average = total / calculateForecast().size();
+        for (Double tempReadings : temperatures.getTemperatures().values()) {
+            total += tempReadings;
         }
-        return average;
+        return total / calculateForecast().size();
     }
 
     public double calculateMedian() {
-        double median=0.0;
-        Collection readings = calculateForecast().values();
-        List tempValues = new ArrayList<>(readings);
-        Arrays.sort(new List[]{tempValues});
-        if (tempValues.size()%2 == 1) {
-            median = (double) tempValues.get(tempValues.size() / 2);
-        }
-        else {
-           // median = (tempValues.get(tempValues.size()/2) + tempValues.get(tempValues.size()/2 - 1))/2;
-        }
-            return median;
+        double median = 0.0;
+        Collection<Double> readings = temperatures.getTemperatures().values();
+        List<Double> tempValues = new ArrayList<>(readings);
+        Collections.sort(tempValues);
+        if (tempValues.size() % 2 == 1) {
+            return tempValues.get(tempValues.size() / 2);
+        } else {
+            return (tempValues.get(tempValues.size() / 2) + tempValues.get(tempValues.size() / 2 - 1)) / 2;
         }
     }
+}
