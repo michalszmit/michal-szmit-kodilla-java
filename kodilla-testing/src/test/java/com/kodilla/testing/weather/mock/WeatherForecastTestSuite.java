@@ -3,6 +3,8 @@ package com.kodilla.testing.weather.mock;
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -14,13 +16,24 @@ import java.util.Map;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@DisplayName("TDD: Weather Forecast Test Suite")
 class WeatherForecastTestSuite {
+
+    private static int testCounter;
+
+    @BeforeEach
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
+    }
 
     @Mock
     private Temperatures temperaturesMock;
 
+
     @Test
     void testCalculateForecastWithMock() {
+
         //Given
         Map<String, Double> temperaturesMap = new HashMap<>();
         temperaturesMap.put("Rzeszow", 25.5);
@@ -69,5 +82,4 @@ class WeatherForecastTestSuite {
         double median = weatherForecast.calculateMedian();
         Assertions.assertEquals(25.2, median);
     }
-
 }
