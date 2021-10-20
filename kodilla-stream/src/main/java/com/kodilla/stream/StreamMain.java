@@ -1,44 +1,28 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.lambda.ExpressionExecutor;
+import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.iterate.NumbersGenerator;
 
-import java.util.*;
 
 public class StreamMain {
 
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
-        List<String> poems = new ArrayList<>();
-        poems.add("Wierszyk");
-        poems.add("Fraszka");
-        poems.add("Tren");
+        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
 
-        poems.sort(Comparator.comparingInt(String::length));
-        System.out.println("Original poems:");
-        System.out.println(poems);
+        System.out.println("Calculating expressions with lambdas");
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
+        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
 
-        List<String> beautifiedPoems = new ArrayList<>();
-        for (String toBeBeautified : poems) {
-            String beautifulPoems = poemBeautifier.beautify(toBeBeautified, n -> n + "!");
-            beautifiedPoems.add(beautifulPoems);
-        }
-        System.out.println("Poems beautified once");
-        System.out.println(beautifiedPoems);
+        System.out.println("Calculating expressions with method references");
+        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::multiplyAByB);
+        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
+        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
+        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
 
-        List<String> beautifiedPoems2 = new ArrayList<>();
-        for (String step2 : beautifiedPoems) {
-            String beautifulPoems2 = poemBeautifier.beautify(step2, n -> n + new Random().nextInt(10));
-            beautifiedPoems2.add(beautifulPoems2);
-        }
-        System.out.println("Poems beautified twice");
-        System.out.println(beautifiedPoems2);
-
- //       List<String> beautifiedPoems3 = new ArrayList<>();
- //       for (String step3 : beautifiedPoems2) {
- //           String beautifulPoems3 = poemBeautifier.beautify().toLowerCase(step3, n -> n);
- //           beautifiedPoems3.add(beautifulPoems3);
- //       }
- //       System.out.println("Poems beautified thrice");
- //       System.out.println(beautifiedPoems3);
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
     }
 }
