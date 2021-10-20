@@ -3,7 +3,7 @@ package com.kodilla.testing.weather.stub;
 import java.util.*;
 
 public class WeatherForecast {
-    private Temperatures temperatures;
+    private final Temperatures temperatures;
 
     public WeatherForecast(Temperatures temperatures) {
         this.temperatures = temperatures;
@@ -31,7 +31,6 @@ public class WeatherForecast {
     }
 
     public double calculateMedian() {
-        double median = 0.0;
         Collection<Double> readings = temperatures.getTemperatures().values();
         List<Double> tempValues = new ArrayList<>(readings);
         Collections.sort(tempValues);

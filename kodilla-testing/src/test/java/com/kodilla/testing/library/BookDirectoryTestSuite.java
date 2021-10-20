@@ -1,5 +1,6 @@
 package com.kodilla.testing.library;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -53,7 +54,7 @@ class BookDirectoryTestSuite {
     void testListBooksWithConditionMoreThan20() {
         // Given
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);                                             // [1]
-        List<Book> resultListOf0Books = new ArrayList<Book>();                                                      // [2]
+        List<Book> resultListOf0Books = new ArrayList<>();                                                          // [2]
         List<Book> resultListOf15Books = generateListOfNBooks(15);                                      // [3]
         List<Book> resultListOf40Books = generateListOfNBooks(40);                                      // [4]
         when(libraryDatabaseMock.listBooksWithCondition(anyString()))                                               // [5]
@@ -86,6 +87,26 @@ class BookDirectoryTestSuite {
         // Then
         assertEquals(0, theListOfBooks10.size());                                                           // [5]
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());            // [6]
+    }
+
+    @Nested
+    class MyTests {
+
+        @Mock
+        private LibraryUser libraryUserMock;
+
+        @Test
+        void testListBooksInHandsOfWithNoBooksRentedCondition() {
+            //LibraryUser libraryUser = new LibraryUser(libraryUserMock);
+
+            //Given
+
+            //When
+
+            //Then
+        }
+
+
     }
 
 }

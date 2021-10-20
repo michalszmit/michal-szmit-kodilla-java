@@ -16,11 +16,9 @@ public class LibraryUser {
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getPeselID() {
         return peselID;
     }
@@ -28,11 +26,9 @@ public class LibraryUser {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public void setPeselID(String peselID) {
         this.peselID = peselID;
     }

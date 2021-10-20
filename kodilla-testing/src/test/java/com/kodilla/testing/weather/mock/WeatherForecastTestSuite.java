@@ -59,6 +59,7 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
         double average = weatherForecast.calculateAverage();
+        //Then
         Assertions.assertEquals(25.56, average, 0.01);
     }
 
@@ -69,6 +70,7 @@ class WeatherForecastTestSuite {
         WeatherForecast weatherForecast = new WeatherForecast(temperaturesMock);
         //When
         double median = weatherForecast.calculateMedian();
+        //Then
         Assertions.assertEquals(25.5, median);
     }
 }
