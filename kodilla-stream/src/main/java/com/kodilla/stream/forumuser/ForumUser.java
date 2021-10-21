@@ -34,6 +34,8 @@ public class ForumUser {
         return birthDate;
     }
 
+    public int getYear() { return getDateOfBirth().getYear();}
+
     public int getPublishedPosts() {
         return publishedPosts;
     }

@@ -10,7 +10,7 @@ public class Modul7zadanie3 {
 
         Map<Integer, ForumUser> theResultMapOfUsers = theForum.getList().stream()
                 .filter(forumUser -> forumUser.getUserSex() == 'M')
-//                .filter(forumUser -> forumUser.getDateOfBirth() < 2001-1-1)
+                .filter(forumUser -> forumUser.getYear() < 2001)
                 .filter(forumUser -> forumUser.getPublishedPosts() >= 1 )
                 .collect(Collectors.toMap(ForumUser::getUserID, forumUser -> forumUser));
 
