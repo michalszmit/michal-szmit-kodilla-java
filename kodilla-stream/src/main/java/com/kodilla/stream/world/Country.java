@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public final class Country {
     private final String name;
-    private final BigDecimal numberOfPeople;
+    private BigDecimal numberOfPeople;
 
     public Country(final String name, final BigDecimal numberOfPeople) {
         this.name = name;
@@ -16,11 +16,7 @@ public final class Country {
         return name;
     }
 
-    public BigDecimal getPeople() {
-        return numberOfPeople;
-    }
-
-    public BigDecimal getPeopleQuantity() {
+    public BigDecimal getNumberOfPeople() {
         return numberOfPeople;
     }
 
