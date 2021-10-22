@@ -12,14 +12,16 @@ public class WorldTestSuite {
     public void getPeopleQuantity() {
         //Given
         World world = new World();
-        world.addContinents(new Continent("Asia").addCountries(new Country("China", new BigDecimal("1400000000"))));
-        world.addContinents(new Continent("Asia").addCountries(new Country("India", new BigDecimal("900000000"))));
-        world.addContinents(new Continent("Europe").addCountries(new Country("Poland", new BigDecimal("40000000"))));
-        world.addContinents(new Continent("Europe").addCountries(new Country("Germany", new BigDecimal("80000000"))));
-        world.addContinents(new Continent("Australia").addCountries(new Country("Australia", new BigDecimal("1500000000"))));
-        world.addContinents(new Continent("Africa").addCountries(new Country("Egypt", new BigDecimal("70000000"))));
+        Continent europa = new Continent("Europa");
+        Continent asia = new Continent ("Asia");
+        Country poland = new Country("Poland", new BigDecimal("40000000"));
+        Country china = new Country("China", new BigDecimal("1400000000"));
+        world.addContinents(europa);
+        world.addContinents(asia);
+        europa.addCountry(poland);
+        asia.addCountry(china);
         //When
-        BigDecimal expectedPeople = new BigDecimal("2640000000");
+        BigDecimal expectedPeople = new BigDecimal("1440000000");
         //Then
         assertEquals(expectedPeople, world.getPeopleQuantity());
         }
