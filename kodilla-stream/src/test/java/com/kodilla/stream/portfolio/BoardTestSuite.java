@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -76,6 +77,31 @@ class BoardTestSuite {
 
         //Then
         assertEquals(2, longTasks);                                     // [9]
+    }
+
+    @Test
+    void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In Progress"));
+        double numberOfTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tn -> tn.getTasks().stream())
+                .map(tx -> tx.getCreated().isBefore(LocalDate.now()))
+                .count();
+
+        long numberOfDays = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(dn ->dn.getTasks().stream())
+                .mapToLong(days -> ChronoUnit.DAYS.between(days.getCreated() , days.getDeadline()))
+                .count();
+
+        double average = numberOfDays / numberOfTasks;
+        //Then
+        assertEquals(10.0, average, 0.1);
     }
 
     private Board prepareTestData() {
