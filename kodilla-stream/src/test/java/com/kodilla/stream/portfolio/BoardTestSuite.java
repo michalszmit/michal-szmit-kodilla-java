@@ -85,23 +85,22 @@ class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In Progress"));
+
         double numberOfTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+                .filter(tl -> tl.getName().equals("In progress"))
                 .flatMap(tn -> tn.getTasks().stream())
-                .map(tx -> tx.getCreated().isBefore(LocalDate.now()))
+                .map(tx -> tx.getCreated().isBefore(LocalDate.now().plusDays(1)))
                 .count();
 
         long numberOfDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+                .filter(tl ->tl.getName().equals("In progress"))
                 .flatMap(dn ->dn.getTasks().stream())
                 .mapToLong(days -> ChronoUnit.DAYS.between(days.getCreated() , days.getDeadline()))
-                .count();
+                .sum();
 
         double average = numberOfDays / numberOfTasks;
         //Then
-        assertEquals(10.0, average, 0.1);
+        assertEquals(18.0, average, 0.5);
     }
 
     private Board prepareTestData() {
