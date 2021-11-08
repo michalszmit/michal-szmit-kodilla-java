@@ -89,7 +89,7 @@ class BoardTestSuite {
         double numberOfTasks = project.getTaskLists().stream()
                 .filter(tl -> tl.getName().equals("In progress"))
                 .flatMap(tn -> tn.getTasks().stream())
-                .map(Task::getCreated)
+                .filter(ta -> ta.getCreated().isBefore(LocalDate.now().plusDays(1)))
                 .count();
 
         long numberOfDays = project.getTaskLists().stream()
