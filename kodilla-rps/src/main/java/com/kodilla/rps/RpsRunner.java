@@ -37,7 +37,7 @@ public class RpsRunner {
             String playerMove;
 
             while (true) {
-                System.out.println("Score: Player wins: " + playerWins + ", Computer wins: " + computerWins + ", ties: " + ties);
+                System.out.println("\nScore: Player wins: " + playerWins + ", Computer wins: " + computerWins + ", Ties: " + ties);
                 System.out.println("\nRound: " + currentRound);
                 System.out.println("Please enter your move: 1 - rock, 2 - paper, 3 scissors");
                 playerMove = move.nextLine();
@@ -97,22 +97,30 @@ public class RpsRunner {
             }
 
             if(currentRound == roundCounter +1) {
-                System.out.println("Game over");
+                System.out.println("\nGame over");
                 System.out.println("Score: Player wins: " + playerWins + ", Computer wins: " + computerWins + ", ties: " + ties);
                 if(playerWins > computerWins){
-                    System.out.println("Congratulations " + username +", you win the game!");
+                    System.out.println("\nCongratulations " + username +", you win the game!");
                 }
                 if(playerWins < computerWins) {
-                    System.out.println("Sorry " + username +", computer wins, better luck next time");
+                    System.out.println("\nSorry " + username +", computer wins, better luck next time");
                 }
                 if(playerWins == computerWins) {
-                    System.out.println("Good game " + username + ", but you have tied...");
+                    System.out.println("\nGood game " + username + ", but you have tied...");
                 }
 
                 System.out.println("\nWould you like to play another game? (n - new game, x - end game)");
                 String playAgain = nextGame.nextLine();
 
-                if(!playAgain.equals("n")) {
+                if(playAgain.equals("n")) {
+                    System.out.println("Please enter the number of rounds you wish to play: ");
+                    roundCounter = round.nextInt();
+                    currentRound = 1;
+                    computerWins =0;
+                    playerWins = 0;
+                    ties =0;
+                }
+                if (!playAgain.equals("n")) {
                     end = true;
                 }
             }
