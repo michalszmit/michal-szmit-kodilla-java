@@ -28,11 +28,10 @@ public class RpsRunner {
         while (!end) {
 
             ArrayList<String> compMoves = new ArrayList<>();
-            compMoves.add(0, "whatever");
-            compMoves.add(1, "rock");
-            compMoves.add(2, "paper");
-            compMoves.add(3, "scissors");
-            String computerMove = compMoves.get((new Random().nextInt(3) + 1));
+            compMoves.add("rock");
+            compMoves.add("paper");
+            compMoves.add("scissors");
+            String computerMove = compMoves.get((new Random().nextInt(3)));
 
             String playerMove;
 

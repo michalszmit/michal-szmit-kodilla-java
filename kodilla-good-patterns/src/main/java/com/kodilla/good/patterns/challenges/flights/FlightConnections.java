@@ -3,6 +3,7 @@ package com.kodilla.good.patterns.challenges.flights;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FlightConnections {
 
@@ -32,26 +33,24 @@ public class FlightConnections {
                 .collect(Collectors.toList());
     }
 
-    // Nie wiem jak wyszukać lot Gdansk - Wroclaw
-/*    public List<Flights> transit(String departureAirports, String transitAirport, String arrivalAirports) {
-        return connections.stream()
-                .filter(e -> e.getArrivalAirport().equals(departureAirports))
+    public List<Flights> transit(String departureAirports, String transitAirport, String arrivalAirports) {
+        return Stream.concat(
+                flightsFrom(departureAirports).stream().filter(e -> e.getArrivalAirport().equals(transitAirport)),
+                 flightsTo(arrivalAirports).stream().filter(e -> e.getDepartureAirport().equals(transitAirport)))
                 .collect(Collectors.toList());
-    }*/
+    }
 
     public static void main(String[] args) {
         FlightConnections flightsFromAirport = new FlightConnections();
         List<Flights> fromAirport = flightsFromAirport.flightsFrom("Gdansk");
-        System.out.println("All flights from Gdansk airport: " + "\n" + fromAirport);
+        System.out.println("\nAll flights from Gdansk airport: " + "\n" + fromAirport);
 
         FlightConnections flightsToAirport = new FlightConnections();
         List<Flights> toAirport = flightsToAirport.flightsTo("Warszawa");
         System.out.println("\nAll flights to Warszawa airport: " + "\n" + toAirport);
 
-/*        FlightConnections transitFlights = new FlightConnections();
-        List<Flights> transitAirport = flightsToAirport.flightsTo("Warszawa");
-        System.out.println("All flights Gdansk to Wroclaw airport: " + "\n" + transitAirport);*/
-
+        FlightConnections transitFlights = new FlightConnections();
+        List<Flights> transitAirport = transitFlights.transit("Gdansk", "Krakow", "Wroclaw");
+        System.out.println("\nAll flights from Gdansk to Wroclaw airport, transit included: " + "\n" + transitAirport);
     }
-
 }
