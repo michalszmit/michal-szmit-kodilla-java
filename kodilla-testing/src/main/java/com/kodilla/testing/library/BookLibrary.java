@@ -19,9 +19,7 @@ public class BookLibrary {
         return bookList;
     }
 
-    public void listBooksInHandsOf(LibraryUser libraryUser) {
-        List<LibraryUser> userList = new ArrayList<>();
-        LibraryUser user = new LibraryUser("John", "Smith", "123456");
-        userList.add(user);
-        }
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
+    }
 }

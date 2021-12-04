@@ -1,4 +1,4 @@
-package com.kodilla.exception.nullpointer;
+package com.kodilla.exception.test.flight;
 
 public class Flight {
 
