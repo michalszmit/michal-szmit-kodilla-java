@@ -1,20 +1,21 @@
 package com.kodilla.patterns.factory.tasks;
 
-public class ShoppingTask implements Task {
+public class DrivingTask implements Task {
+
     private final String taskName;
-    private final String whatToBuy;
-    private final double quantity;
+    private final String where;
+    private final String using;
     private boolean isExecuted = false;
 
-    public ShoppingTask(final String taskName, final String whatToBuy, final double quantity) {
+    public DrivingTask(final String taskName, final String where,final String using) {
         this.taskName = taskName;
-        this.whatToBuy = whatToBuy;
-        this.quantity = quantity;
+        this.where = where;
+        this.using = using;
     }
 
     @Override
     public void executeTask() {
-        System.out.println("[Buying] " + whatToBuy + " - " + quantity  + " pcs");
+        System.out.println("[Driving] " + getTaskName() + " to " + where + " using " + using);
         isExecuted = true;
     }
 
