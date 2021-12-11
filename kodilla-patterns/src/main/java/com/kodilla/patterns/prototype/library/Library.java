@@ -36,4 +36,13 @@ public final class Library extends Prototype {
     public Set<Book> getBooks() {
         return books;
     }
+
+    @Override
+    public String toString() {
+        String s = "Library [" + name + "]\n";
+        for (Book list : books) {
+            s = s + list.toString() + "\n";
+        }
+        return s;
+    }
 }

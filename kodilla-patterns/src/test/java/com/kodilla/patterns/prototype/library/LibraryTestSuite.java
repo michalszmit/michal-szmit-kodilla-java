@@ -12,9 +12,9 @@ public class LibraryTestSuite {
     @Test
     public void testGetBooks() {
         //Given
-        Book book1 = new Book("20000 mil podmorskiej żeglugi", "Julius Verne", LocalDate.of(1870, 5, 5));
+        Book book1 = new Book("20000 mil podmorskiej zeglugi", "Julius Verne", LocalDate.of(1870, 5, 5));
         Book book2 = new Book("Tajemnicza wyspa", "Julius Verne", LocalDate.of(1875, 1, 1));
-        Book book3 = new Book("W 80 dni dookoła świata", "Julius Verne", LocalDate.of(1872, 2, 2));
+        Book book3 = new Book("W 80 dni dookoła swiata", "Julius Verne", LocalDate.of(1872, 2, 2));
 
         Library library = new Library("Original library");
         library.getBooks().add(book1);
