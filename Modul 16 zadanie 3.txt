@@ -1,0 +1,78 @@
+create table ISSUESLIST
+(
+    ID serial primary key,
+    NAME VARCHAR(100)
+);
+
+create table ISSUES
+(
+    ID serial primary key,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100),
+    DESCRIPTION VARCHAR(1024),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID),
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLIST(ID)
+);
+
+insert into ISSUESLIST (NAME)
+values ('To do');
+
+insert into ISSUESLIST (NAME)
+values ('In progress');
+
+insert into ISSUESLIST (NAME)
+values ('Done');
+
+COMMIT;
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (1, 1, 'Walk the dog', 'Take the dog to walk in a park');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (1, 1, 'Homework', 'Do your math class homework');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (1, 1, 'Trash', 'Take out the trash');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (1, 1, 'Shopping', 'Buy groceries');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (1, 1, 'Call grandma', 'Grandma s birthday - make a phone call');
+
+commit;
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (2, 2, 'Clean the room', 'Clean your room');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (2, 2, 'Wash dishes', 'Wash the dishes after dinner');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (2, 2, 'Wash car', 'Car is filthy, go wash it');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (2, 2, 'Cook dinner', 'We are having guests, cook something');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (2, 2, 'Buy gift', 'It s your brother s birthday Buy a present');
+
+commit;
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (3, 3, 'Get driver licence', 'Congratulations on passing your driver s exams');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (3, 3, 'Read book', 'I have finally read Peter Pan');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (3, 3, 'Learn Karate', 'Senpai notice me!');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (3, 3, 'Order pizza', 'Finally some good food!');
+
+insert into ISSUES (IssuesList_ID, USER_ID_ASSIGNEDTO, SUMMARY, DESCRIPTION )
+values (3, 3, 'Have fun', 'Just relax and take it easy');
+
+commit;
