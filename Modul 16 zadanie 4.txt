@@ -1,0 +1,20 @@
+[2021-12-19 16:47:58] manual transaction mode ON
+[2021-12-19 16:49:24] Connected
+kodilla_course> use kodilla_course
+
+kodilla_course> select * from issues
+
+kodilla_course> select * from issueslist
+
+kodilla_course> select I.NAME, Iss.SUMMARY
+                From issueslist I
+                Join issues ISS ON I.ID = ISS.ISSUESLIST_ID
+
+kodilla_course> select Iss.SUMMARY, U.FIRSTNAME, U.LASTNAME
+                From users U
+                Join issues ISS ON U.ID = ISS.ISSUESLIST_ID 
+
+kodilla_course> select Iss.SUMMARY, U.FIRSTNAME, U.LASTNAME, Count(*) as TASK_NUMBER
+                From users U Join issues ISS ON U.ID = ISS.ISSUESLIST_ID
+                group by ISS.USER_ID_ASSIGNEDTO
+                having count(*) > 0
