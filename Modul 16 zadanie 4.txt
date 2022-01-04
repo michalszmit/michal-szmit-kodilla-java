@@ -14,7 +14,7 @@ kodilla_course> select Iss.SUMMARY, U.FIRSTNAME, U.LASTNAME
                 From users U
                 Join issues ISS ON U.ID = ISS.ISSUESLIST_ID 
 
-kodilla_course> select Iss.SUMMARY, U.FIRSTNAME, U.LASTNAME, Count(*) as TASK_NUMBER
+kodilla_course> select U.FIRSTNAME, U.LASTNAME, Count(*) as TASK_NUMBER
                 From users U Join issues ISS ON U.ID = ISS.ISSUESLIST_ID
                 group by ISS.USER_ID_ASSIGNEDTO
                 having count(*) > 0
