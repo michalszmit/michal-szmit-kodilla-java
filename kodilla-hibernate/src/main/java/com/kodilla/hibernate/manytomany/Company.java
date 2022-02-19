@@ -5,12 +5,19 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@NamedNativeQueries({
 @NamedNativeQuery(
         name = "Company.retrieveByFirst3Characters",
         query = "SELECT * FROM companies WHERE LEFT(company_name, 3) = :3CHAR",
         resultClass = Company.class
+),
+
+@NamedNativeQuery(
+        name = "Company.retrieveCompaniesByPartialName",
+        query = "SELECT * FROM COMPANIES WHERE COMPANY_NAME LIKE CONCAT ('%', :PART_NAME, '%')",
+        resultClass = Company.class
 )
+})
 
 @Entity
 @Table(name = "COMPANIES")
