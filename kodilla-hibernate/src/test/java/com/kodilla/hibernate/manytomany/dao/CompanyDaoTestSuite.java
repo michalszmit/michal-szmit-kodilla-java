@@ -57,13 +57,8 @@ class CompanyDaoTestSuite {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
     }
 
     @Transactional
@@ -93,11 +88,8 @@ class CompanyDaoTestSuite {
         employee5.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
 
         //When
         List<Employee> lastnameSearch = employeeDao.retrieveByLastname("Gates");
@@ -106,13 +98,8 @@ class CompanyDaoTestSuite {
         assertEquals(3, lastnameSearch.size());
 
         //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
     }
 
     @Transactional
@@ -142,11 +129,8 @@ class CompanyDaoTestSuite {
         employee5.getCompanies().add(greyMatter);
 
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
 
         //When
         List<Company> firstThreeChars = companyDao.retrieveByFirst3Characters("Gre");
@@ -155,12 +139,7 @@ class CompanyDaoTestSuite {
         assertEquals(2, firstThreeChars.size());
 
         //CleanUp
-        try {
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
+            companyDao.deleteAll();
+            employeeDao.deleteAll();
     }
 }
